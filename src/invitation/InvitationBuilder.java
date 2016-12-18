@@ -1,7 +1,5 @@
 package invitation;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.function.Consumer;
 
 public class InvitationBuilder {
@@ -11,26 +9,31 @@ public class InvitationBuilder {
 		invit = new Invitation();
 	}
 
+	/*********
+	 * Configuration de DSL en utilisant des interface fonctionnelle et des
+	 * consommateurs
+	 ***********/
+
 	public static Invitation invit(Consumer<InvitationBuilder> invitConsumer) {
 		InvitationBuilder invitBuilder = new InvitationBuilder();
 		invitConsumer.accept(invitBuilder);
 		return invitBuilder.invit;
 	}
 
-	public void programme(Consumer<ProgrammeBuilder> gConsumer) {
-		ProgrammeBuilder gBuilder = new ProgrammeBuilder();
+	public void programme(Consumer<Programme> gConsumer) {
+		Programme gBuilder = new Programme();
 		gConsumer.accept(gBuilder);
-		Programme prog = gBuilder.programme();
-		invit.addProgramme(prog);
+		invit.addProgramme(gBuilder);
 	}
 
-	public void conferencier(Consumer<ConferencierBuilder> cConsumer) {
-		ConferencierBuilder cBuilder = new ConferencierBuilder();
+	public void conferencier(Consumer<Conferencier> cConsumer) {
+		Conferencier cBuilder = new Conferencier();
 		cConsumer.accept(cBuilder);
-		Conferencier conf = cBuilder.conferencier();
-		invit.addConferencier(conf);
+		invit.addConferencier(cBuilder);
 	}
-	
+
+	/**************** méthodes au DSL ****************/
+
 	public void titreDeLInvitation(String nomInv) {
 		invit.nomInvite(nomInv);
 	}
@@ -42,13 +45,8 @@ public class InvitationBuilder {
 	public void theme(String theme) {
 		invit.theme(theme);
 	}
-	public void date(String dateInString) {
 
-		SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-		try {
-			invit.date(format1.parse(dateInString));
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+	public void date(String dateInString) {
+		invit.date(dateInString);
 	}
 }

@@ -18,15 +18,18 @@ public class Conferencier {
 		return nomConf;
 	}
 
-	public void nomConf(String nomConf) {
-		this.nomConf = nomConf;
-	}
-
 	public String profession() {
 		return profession;
 	}
 
-	public void profession(String profession) {
+	/************* méthodes au DSL **********/
+
+	public void participationDe(String nomConf) {
+
+		this.nomConf = nomConf;
+	}
+
+	public void enTantQue(String profession) {
 		this.profession = profession;
 	}
 

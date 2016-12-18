@@ -1,6 +1,7 @@
 package invitation;
 
- 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -22,22 +23,20 @@ public class Invitation {
 	public String toString() {
 		String programmes = "\n programme : ";
 		for (Programme p : this.programmes) {
-			programmes = programmes + "\n" + p.heure() + " -- " + p.description();
+			programmes = programmes + "\n" + p.toString();
 		}
 
 		String conferenciers = "\n Animée par : ";
 		for (Conferencier c : this.conferenciers) {
-			conferenciers = conferenciers + "\n" + c.nomConf() + "  " + c.profession();
+			conferenciers = conferenciers + "\n" + c.nomConf() + "  "
+					+ c.profession();
 		}
-		
+
 		return "---------------Invitation---------------"
-		+ "\n Titre de l'invitation : " + this.nomInvite 
-		+"\n"
-		+"\n Thème :"+ this.theme
-		+ conferenciers
-		+ programmes
-		+ "\n Date de la conference : " + this.date
-		+ "\n Lieu de la conference : " + this.lieu;
+				+ "\n Titre de l'invitation : " + this.nomInvite + "\n"
+				+ "\n Thème :" + this.theme + conferenciers + programmes
+				+ "\n Date de la conference : " + this.date
+				+ "\n Lieu de la conference : " + this.lieu;
 	}
 
 	public String nomInvite() {
@@ -63,13 +62,15 @@ public class Invitation {
 	public void addProgramme(Programme prog) {
 		programmes.add(prog);
 	}
+
 	public List<Conferencier> conferenciers() {
 		return conferenciers;
 	}
+
 	public void addConferencier(Conferencier conf) {
 		conferenciers.add(conf);
 	}
-	
+
 	public String theme() {
 		return theme;
 	}
@@ -82,8 +83,13 @@ public class Invitation {
 		return date;
 	}
 
-	public void date(Date date) {
-		this.date = date;
+	public void date(String date) {
+		SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+		try {
+			this.date = format1.parse(date);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 }
