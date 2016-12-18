@@ -24,19 +24,29 @@ public class InvitationBuilder {
 		invit.addProgramme(prog);
 	}
 
-	public void nomInvite(String nomInv) {
-		invit.setNomInvite(nomInv);
+	public void conferencier(Consumer<ConferencierBuilder> cConsumer) {
+		ConferencierBuilder cBuilder = new ConferencierBuilder();
+		cConsumer.accept(cBuilder);
+		Conferencier conf = cBuilder.conferencier();
+		invit.addConferencier(conf);
+	}
+	
+	public void titreDeLInvitation(String nomInv) {
+		invit.nomInvite(nomInv);
 	}
 
 	public void lieu(String lieuConf) {
-		invit.setLieu(lieuConf);
+		invit.lieu(lieuConf);
 	}
 
+	public void theme(String theme) {
+		invit.theme(theme);
+	}
 	public void date(String dateInString) {
 
 		SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 		try {
-			invit.Date(format1.parse(dateInString));
+			invit.date(format1.parse(dateInString));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
