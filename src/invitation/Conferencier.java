@@ -22,8 +22,22 @@ public class Conferencier {
 		return profession;
 	}
 
+	@Override
+	public String toString() {
+		if (valide() != true)
+			return "Conferencier incomplet";
+		else
+			return nomConf + "  " + profession;
+	}
+
+	public boolean valide() {
+		return profession != null && nomConf != "";
+	}
 	/************* méthodes au DSL **********/
 
+	public Conferencier(ConferencierBuilder d) {
+		d.build(this);
+	} 
 	public void participationDe(String nomConf) {
 
 		this.nomConf = nomConf;

@@ -28,8 +28,7 @@ public class Invitation {
 
 		String conferenciers = "\n Animée par : ";
 		for (Conferencier c : this.conferenciers) {
-			conferenciers = conferenciers + "\n" + c.nomConf() + "  "
-					+ c.profession();
+			conferenciers = conferenciers + "\n" + c.toString();
 		}
 
 		return "---------------Invitation---------------"

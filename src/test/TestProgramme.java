@@ -16,7 +16,7 @@ public class TestProgramme {
 	public Programme progErrorD;
 
 	@Before
-	public void initInvitationTest() {
+	public void initProgrammeTest() {
 		prog = new Programme(p -> {
 			p.presente(DESCRIPTION);
 			p.heure(HEURE);
