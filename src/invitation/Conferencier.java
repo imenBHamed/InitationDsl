@@ -4,12 +4,9 @@ public class Conferencier {
 	private String nomConf;
 	private String profession;
 
-	public Conferencier() {
-
-	}
+	public Conferencier() {}
 
 	public Conferencier(String nomConf, String profession) {
-
 		this.nomConf = nomConf;
 		this.profession = profession;
 	}
@@ -36,6 +33,7 @@ public class Conferencier {
 	public boolean valide() {
 		return profession != null && nomConf != null;
 	}
+	
 	/************* méthodes au DSL **********/
 
 	public Conferencier(ConferencierBuilder d) {

@@ -28,32 +28,25 @@ public class Invitation {
 			ok = true;
 		else {
 			for (Programme p : this.programmes) {
-				
-				
-					programmes = programmes + "\n" + p.toString();
+				programmes = programmes + "\n" + p.toString();
 			}
 
 			confs = "\n Animée par : ";
 
 			for (Conferencier c : this.conferenciers) {
-				
-
-				
-					confs = confs + "\n" + c.toString();
+				confs = confs + "\n" + c.toString();
 			}
 		}
 		if (nomInvite == null || theme == null || lieu == null || date == null
-				|| ok == true){
+				|| ok == true) {
 			throw new IllegalArgumentException(
-                    "Il faut saisir toutes les informations d'une invitation");
+					"Il faut saisir toutes les informations d'une invitation");
 		}
-			return "---------------Invitation---------------"
-			+ "\n Titre de l'invitation : " + this.nomInvite + "\n"
-			+ "\n Thème :" + this.theme 
-			+ confs 
-			+ programmes
-			+ "\n Date de la conference : " + this.date
-			+ "\n Lieu de la conference : " + this.lieu;
+		return "---------------Invitation---------------"
+				+ "\n Titre de l'invitation : " + this.nomInvite + "\n"
+				+ "\n Thème :" + this.theme + confs + programmes
+				+ "\n Date de la conference : " + this.date
+				+ "\n Lieu de la conference : " + this.lieu;
 
 	}
 

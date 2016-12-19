@@ -18,7 +18,6 @@ public class Programme {
 	public Programme(String description, Time heure) {
 		this.description = description;
 		this.heure = heure;
-
 	}
 
 	public Programme(ProgrammeBuilder d) {
