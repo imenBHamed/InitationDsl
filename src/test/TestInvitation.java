@@ -22,7 +22,7 @@ public class TestInvitation {
     private static final String LIEU = "Ottwaa";
     private static final String THEME = "Importance du Ruby";
 	private String attendu;
-	private String attenduError;
+	
 	
 	private Invitation invitation;
 	private Invitation invitation1;
@@ -78,7 +78,7 @@ public class TestInvitation {
 				+ "\n Date de la conference : Mon May 15 08:00:00 EDT 2017"
 				+ "\n Lieu de la conference : " + LIEU;
 		
-		attenduError = "Invitation incomplete"; 
+	
 	}
 	
 	@Test
@@ -86,15 +86,15 @@ public class TestInvitation {
 		assertEquals(attendu, invitation.toString());
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testAjoutInvitationIncomplete() {
-		assertEquals(attenduError, invitation1.toString());
+		 invitation1.toString();
 		
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testInsertionInvitationIncomplete() {
-		assertEquals(attenduError, invitation2.toString());
+		invitation2.toString();
 	}
 	
 	

@@ -52,14 +52,14 @@ public class TestConferencier {
 		assertEquals("ingenieur", conf.profession());
 	}
 
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testajoutIncomplet() {
-		assertEquals(attenduError, confErrorP.toString());
+		  confErrorP.toString();
 	}
 	
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testAjoutIncomplet() {
-		assertEquals(attenduError, confErrorN.toString());
+		confErrorN.toString();
 	}
 
 }

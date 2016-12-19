@@ -28,24 +28,25 @@ public class Invitation {
 			ok = true;
 		else {
 			for (Programme p : this.programmes) {
-				if (p.toString().equals("Programme à completer"))
-					ok = true;
-				else
+				
+				
 					programmes = programmes + "\n" + p.toString();
 			}
 
 			confs = "\n Animée par : ";
 
 			for (Conferencier c : this.conferenciers) {
-				if (c.toString().equals("Conferencier incomplet"))
-					ok = true;
+				
 
-				else
+				
 					confs = confs + "\n" + c.toString();
 			}
 		}
-		if (nomInvite != "" && theme != "" && lieu != "" && date != null
-				&& ok == false)
+		if (nomInvite == null || theme == null || lieu == null || date == null
+				|| ok == true){
+			throw new IllegalArgumentException(
+                    "Il faut saisir toutes les informations d'une invitation");
+		}
 			return "---------------Invitation---------------"
 			+ "\n Titre de l'invitation : " + this.nomInvite + "\n"
 			+ "\n Thème :" + this.theme 
@@ -54,9 +55,6 @@ public class Invitation {
 			+ "\n Date de la conference : " + this.date
 			+ "\n Lieu de la conference : " + this.lieu;
 
-		else
-
-			return "Invitation incomplete";
 	}
 
 	public String nomInvite() {

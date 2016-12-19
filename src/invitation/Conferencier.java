@@ -25,7 +25,10 @@ public class Conferencier {
 	@Override
 	public String toString() {
 		if (valide() != true)
-			return "Conferencier incomplet";
+		{
+			throw new IllegalArgumentException(
+                    "Il faut saisir toutes les informations d'un conférencier");
+		}
 		else
 			return nomConf + "  " + profession;
 	}
