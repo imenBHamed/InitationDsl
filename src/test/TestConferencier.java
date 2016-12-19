@@ -56,5 +56,10 @@ public class TestConferencier {
 	public void testajoutIncomplet() {
 		assertEquals(attenduError, confErrorP.toString());
 	}
+	
+	@Test
+	public void testAjoutIncomplet() {
+		assertEquals(attenduError, confErrorN.toString());
+	}
 
 }

@@ -34,7 +34,7 @@ public class InvitationBuilder {
 
 	/**************** méthodes au DSL ****************/
 
-	public void titreDeLInvitation(String nomInv) {
+	public void nomInvite(String nomInv) {
 		invit.nomInvite(nomInv);
 	}
 

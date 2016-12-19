@@ -13,6 +13,7 @@ public class Invitation {
 	private List<Programme> programmes;
 	private List<Conferencier> conferenciers;
 	private Date date;
+	private boolean ok= false;
 
 	public Invitation() {
 		programmes = new ArrayList<Programme>();
@@ -21,74 +22,88 @@ public class Invitation {
 
 	@Override
 	public String toString() {
+
 		String programmes = "\n programme : ";
 		for (Programme p : this.programmes) {
 			programmes = programmes + "\n" + p.toString();
 		}
 
 		String conferenciers = "\n Animée par : ";
-		for (Conferencier c : this.conferenciers) {
-			conferenciers = conferenciers + "\n" + c.toString();
-		}
+		if(this.conferenciers.size() == 0) 
+			ok = true;
+		else
 
-		return "---------------Invitation---------------"
-				+ "\n Titre de l'invitation : " + this.nomInvite + "\n"
-				+ "\n Thème :" + this.theme + conferenciers + programmes
-				+ "\n Date de la conference : " + this.date
-				+ "\n Lieu de la conference : " + this.lieu;
-	}
+			for (Conferencier c : this.conferenciers) {
+				if(c.toString().equals("Conferencier incomplet"))
+					ok = true;
 
-	public String nomInvite() {
-		return nomInvite;
-	}
+				else
+					conferenciers = conferenciers + "\n" + c.toString();
+			}
+		if(nomInvite != "" && theme != "" &&  lieu != "" && date != null && ok == false)
+			return "---------------Invitation---------------"
+			+ "\n Titre de l'invitation : " + this.nomInvite + "\n"
+			+ "\n Thème :" + this.theme + conferenciers + programmes
+			+ "\n Date de la conference : " + this.date
+			+ "\n Lieu de la conference : " + this.lieu;
 
-	public void nomInvite(String nomInvite) {
-		this.nomInvite = nomInvite;
-	}
+		else
 
-	public String lieu() {
-		return lieu;
+			return "Invitation incomplete";
 	}
+ 
 
-	public void lieu(String lieu) {
-		this.lieu = lieu;
-	}
+public String nomInvite() {
+	return nomInvite;
+}
 
-	public List<Programme> programmes() {
-		return programmes;
-	}
+public void nomInvite(String nomInvite) {
+	this.nomInvite = nomInvite;
+}
 
-	public void addProgramme(Programme prog) {
-		programmes.add(prog);
-	}
+public String lieu() {
+	return lieu;
+}
 
-	public List<Conferencier> conferenciers() {
-		return conferenciers;
-	}
+public void lieu(String lieu) {
+	this.lieu = lieu;
+}
 
-	public void addConferencier(Conferencier conf) {
-		conferenciers.add(conf);
-	}
+public List<Programme> programmes() {
+	return programmes;
+}
 
-	public String theme() {
-		return theme;
-	}
+public void addProgramme(Programme prog) {
+	programmes.add(prog);
+}
 
-	public void theme(String theme) {
-		this.theme = theme;
-	}
+public List<Conferencier> conferenciers() {
+	return conferenciers;
+}
 
-	public Date date() {
-		return date;
-	}
+public void addConferencier(Conferencier conf) {
+	conferenciers.add(conf);
+}
 
-	public void date(String date) {
-		SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
-		try {
-			this.date = format1.parse(date);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+public String theme() {
+	return theme;
+}
+
+public void theme(String theme) {
+	this.theme = theme;
+}
+
+public Date date() {
+	return date;
+}
+
+public void date(String date) {
+	SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+	try {
+		this.date = format1.parse(date);
+	} catch (ParseException e) {
+		e.printStackTrace();
 	}
+}
 
 }

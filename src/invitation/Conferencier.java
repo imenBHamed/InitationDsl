@@ -31,7 +31,7 @@ public class Conferencier {
 	}
 
 	public boolean valide() {
-		return profession != null && nomConf != "";
+		return profession != null && nomConf != null;
 	}
 	/************* méthodes au DSL **********/
 
