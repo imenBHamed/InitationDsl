@@ -38,7 +38,7 @@ public class Invitation {
 			}
 		}
 		if (nomInvite == null || theme == null || lieu == null || date == null
-				|| ok == true) {
+				|| ok) {
 			throw new IllegalArgumentException(
 					"Il faut saisir toutes les informations d'une invitation");
 		}

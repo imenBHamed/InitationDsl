@@ -36,7 +36,7 @@ public class Programme {
 
 	@Override
 	public String toString() {
-		if (valide() != true){
+		if (!valide()){
 			throw new IllegalArgumentException(
                     "Il faut saisir toutes les informations d'un programme");
 		}
