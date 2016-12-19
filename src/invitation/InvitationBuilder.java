@@ -10,8 +10,7 @@ public class InvitationBuilder {
 	}
 
 	/*********
-	 * Configuration de DSL en utilisant des interface fonctionnelle et des
-	 * consommateurs
+	 * Configuration de DSL en utilisant des consommateurs
 	 ***********/
 
 	public static Invitation invit(Consumer<InvitationBuilder> invitConsumer) {

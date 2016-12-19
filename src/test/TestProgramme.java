@@ -32,7 +32,7 @@ public class TestProgramme {
 		});
 
 		attendu = "20:03:00 -- " + DESCRIPTION;
-		attenduError = "programme à completer";
+		 
 	}
 
 	@Test
@@ -50,9 +50,9 @@ public class TestProgramme {
 		assertEquals(attendu, prog.toString());
 	}
 
-	@Test
+	@Test(expected=IllegalArgumentException.class)
 	public void testajoutIncomplet() {
-		assertEquals(attenduError, progError.toString());
+		progError.toString();
 	}
 
 }

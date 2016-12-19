@@ -37,9 +37,10 @@ public class Programme {
 
 	@Override
 	public String toString() {
-		if (valide() != true)
-			return "Programme à completer";
-		else
+		if (valide() != true){
+			throw new IllegalArgumentException(
+                    "Il faut saisir toutes les informations d'un programme");
+		}
 			return heure + " -- " + description;
 	}
 
