@@ -38,7 +38,7 @@ public class Programme {
 	@Override
 	public String toString() {
 		if (valide() != true)
-			return "programme à completer";
+			return "Programme à completer";
 		else
 			return heure + " -- " + description;
 	}

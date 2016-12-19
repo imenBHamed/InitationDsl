@@ -12,12 +12,12 @@ public class Main {
 				prog.heure("08:03 pm");
 				prog.presente("les nouvelles fonctionnalités de DSL");
 			});
-			
+
 			inv.programme(prog -> {
 				prog.heure("10:00 pm");
 				prog.presente("les avantages de DSL");
 			});
-			
+
 			inv.conferencier(conf -> {
 				conf.participationDe("Alexis lio");
 				conf.enTantQue("Maitre de conference");
