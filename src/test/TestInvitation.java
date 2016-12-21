@@ -14,11 +14,13 @@ import invitation.InvitationBuilder;
 import invitation.Programme;
 
 public class TestInvitation {
-	private static final String HEURE = "08:03 pm";
+	private static final String HEURE = "09:03 am";
+	private static final String HEURE_1 = "10:00 am";
+	private static final String HEURE_2 = "11:00 am";
 	private static final String NOMINVITE = "M. Alex";
 	private static final String DESCRIPTION = "Ruby";
 	private static final String NOMCONFERENCIER = "Alexis";
-	private static final String DATE = "30-03-2015";
+	private static final String DATE = "30-03-2017 09:00:00";
 	private static final String PROFESSION = "ingenieur";
 	private static final String LIEU = "Ottwaa";
 	private static final String THEME = "Importance du Ruby";
@@ -65,9 +67,10 @@ public class TestInvitation {
 			inv.nomInvite(NOMINVITE);
 			inv.date(DATE);
 			inv.lieu(LIEU);
-			inv.programme(prog -> {
-				prog.heure(HEURE);
-				prog.presente(DESCRIPTION);
+			inv.conferencier(conf -> {
+				conf.participationDe(NOMCONFERENCIER);
+				conf.enTantQue(PROFESSION);
+
 			});
 
 		});
@@ -85,7 +88,7 @@ public class TestInvitation {
 				prog.presente(DESCRIPTION);
 			});
 			inv.programme(prog -> {
-				prog.heure(HEURE);
+				prog.heure(HEURE_1);
 				prog.presente(DESCRIPTION);
 			});
 			inv.conferencier(conf -> {
@@ -99,8 +102,8 @@ public class TestInvitation {
 		attendu = "---------------Invitation---------------"
 				+ "\n Titre de l'invitation : " + NOMINVITE + "\n"
 				+ "\n Thème :" + THEME + "\n Animée par : \n" + NOMCONFERENCIER
-				+ "  " + PROFESSION + "\n programme : \n" + "20:03:00 -- "
-				+ DESCRIPTION + "\n Date de la conference : 30-03-2015"
+				+ "  " + PROFESSION + "\n programme : \n" + "09:03:00 -- "
+				+ DESCRIPTION + "\n Date de la conference : 30-03-2017 09:00:00"
 				+ "\n Lieu de la conference : " + LIEU;
 
 	}

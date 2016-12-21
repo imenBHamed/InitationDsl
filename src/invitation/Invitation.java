@@ -16,7 +16,7 @@ public class Invitation {
 	private List<Conferencier> conferenciers;
 	private Date date;
 	private boolean ok = false;
-	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
 
 	public Invitation() {
 		programmes = new ArrayList<Programme>();

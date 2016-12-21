@@ -7,7 +7,7 @@ public class Main {
 			inv.nomInvite("M. Guy Tremblay");
 			inv.theme("Maintenance et Réalisation");
 			inv.lieu("Montreal");
-			inv.date("30-03-2017");
+			inv.date("30-03-2017 09:00:00");
 			inv.programme(prog -> {
 				prog.heure("09:00 am");
 				prog.presente("Introduction");
