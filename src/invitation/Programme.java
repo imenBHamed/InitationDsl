@@ -8,13 +8,13 @@ import java.text.SimpleDateFormat;
 public class Programme {
 	private String description;
 	private Time heure;
+	DateFormat formatter = new SimpleDateFormat("hh:mm a");
 
 	public Programme() {
 		this.description = "";
 		this.heure = null;
 	}
 
-	
 	public Programme(String description, Time heure) {
 		this.description = description;
 		this.heure = heure;
@@ -29,18 +29,17 @@ public class Programme {
 	}
 
 	public String heure() {
-		DateFormat formatter = new SimpleDateFormat("hh:mm a");
 		String formattedTime = formatter.format(heure);
 		return formattedTime;
 	}
 
 	@Override
 	public String toString() {
-		if (!valide()){
+		if (!valide()) {
 			throw new IllegalArgumentException(
-                    "Il faut saisir toutes les informations d'un programme");
+					"Il faut saisir toutes les informations d'un programme");
 		}
-			return heure + " -- " + description;
+		return heure + " -- " + description;
 	}
 
 	public boolean valide() {
@@ -50,7 +49,6 @@ public class Programme {
 	/****************** méthodes au DSL *****************/
 
 	public void heure(String heure) {
-		DateFormat formatter = new SimpleDateFormat("hh:mm a");
 		try {
 
 			this.heure = new java.sql.Time(formatter.parse(heure).getTime());

@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.InputMismatchException;
+import java.util.Iterator;
 import java.util.List;
 
 public class Invitation {
@@ -14,6 +16,7 @@ public class Invitation {
 	private List<Conferencier> conferenciers;
 	private Date date;
 	private boolean ok = false;
+	SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 
 	public Invitation() {
 		programmes = new ArrayList<Programme>();
@@ -22,6 +25,7 @@ public class Invitation {
 
 	@Override
 	public String toString() {
+
 		String confs = "";
 		String programmes = "\n programme : ";
 		if (this.conferenciers.size() == 0 || this.programmes.size() == 0)
@@ -42,12 +46,40 @@ public class Invitation {
 			throw new IllegalArgumentException(
 					"Il faut saisir toutes les informations d'une invitation");
 		}
+		if (validDate()) {
+			throw new InputMismatchException(
+					"Il faut les heures de programme en ordre chronologique");
+		}
 		return "---------------Invitation---------------"
 				+ "\n Titre de l'invitation : " + this.nomInvite + "\n"
 				+ "\n Thème :" + this.theme + confs + programmes
-				+ "\n Date de la conference : " + this.date
+				+ "\n Date de la conference : " + formatter.format(this.date)
 				+ "\n Lieu de la conference : " + this.lieu;
 
+	}
+
+	public Boolean validDate() {
+		Date d1;
+		Date d2;
+		boolean ok = false;
+		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+		Iterator<Programme> it = this.programmes.iterator();
+		Programme element = it.next();
+		while (it.hasNext()) {
+			Programme elementSuivant = it.next();
+			try {
+				d1 = format.parse(elementSuivant.heure());
+				d2 = format.parse(element.heure());
+				if (!(d1.getTime() > d2.getTime())) {
+					ok = true;
+					break;
+				}
+				element = elementSuivant;
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+		}
+		return ok;
 	}
 
 	public String nomInvite() {
@@ -95,9 +127,9 @@ public class Invitation {
 	}
 
 	public void date(String date) {
-		SimpleDateFormat format1 = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+
 		try {
-			this.date = format1.parse(date);
+			this.date = formatter.parse(date);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

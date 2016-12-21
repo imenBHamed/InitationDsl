@@ -11,7 +11,6 @@ public class TestConferencier {
 	private static final String NOMCONFERENCIER = "Alexis";
 	private static final String PROFESSION = "ingenieur";
 	private String attendu;
-	private String attenduError;
 	public Conferencier conf;
 	public Conferencier confErrorP;
 	public Conferencier confErrorN;
@@ -33,8 +32,7 @@ public class TestConferencier {
 		});
 
 		attendu = NOMCONFERENCIER + "  " + PROFESSION;
-		attenduError = "Conferencier incomplet";
-
+ 
 	}
 
 	@Test
