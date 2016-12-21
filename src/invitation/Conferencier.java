@@ -27,7 +27,7 @@ public class Conferencier {
                     "Il faut saisir toutes les informations d'un conférencier");
 		}
 		else
-			return nomConf + "  " + profession;
+			return "\t" + nomConf + "  " + profession;
 	}
 
 	public boolean valide() {

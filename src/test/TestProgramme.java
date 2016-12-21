@@ -20,7 +20,6 @@ public class TestProgramme {
 		prog = new Programme(p -> {
 			p.presente(DESCRIPTION);
 			p.heure(HEURE);
-
 		});
 
 		progError = new Programme(p -> {
@@ -32,7 +31,6 @@ public class TestProgramme {
 		});
 
 		attendu = "20:03:00 -- " + DESCRIPTION;
-		 
 	}
 
 	@Test

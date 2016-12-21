@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.List;
+import java.awt.*;
 
 public class Invitation {
 	private String nomInvite;
@@ -27,7 +28,7 @@ public class Invitation {
 	public String toString() {
 
 		String confs = "";
-		String programmes = "\n programme : ";
+		String programmes = "\nProgramme : ";
 		if (this.conferenciers.size() == 0 || this.programmes.size() == 0)
 			ok = true;
 		else {
@@ -35,7 +36,7 @@ public class Invitation {
 				programmes = programmes + "\n" + p.toString();
 			}
 
-			confs = "\n Animée par : ";
+			confs = "\nPrésentée par : ";
 
 			for (Conferencier c : this.conferenciers) {
 				confs = confs + "\n" + c.toString();
@@ -50,11 +51,13 @@ public class Invitation {
 			throw new InputMismatchException(
 					"Il faut les heures de programme en ordre chronologique");
 		}
-		return "---------------Invitation---------------"
-				+ "\n Titre de l'invitation : " + this.nomInvite + "\n"
-				+ "\n Thème :" + this.theme + confs + programmes
-				+ "\n Date de la conference : " + formatter.format(this.date)
-				+ "\n Lieu de la conference : " + this.lieu;
+		return " \t---------------Invitation---------------"
+				+ "\n\n\n"+ this.nomInvite + ", vous êtes cordialement invités à la conférence ayant pour thème"
+				+ "\n \t" + this.theme  
+				+ "\n" + confs
+				+ "\n" + programmes
+				+ "\n\nDate: " + formatter.format(this.date)
+				+ "\t Lieu: " + this.lieu;
 
 	}
 

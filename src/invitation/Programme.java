@@ -50,7 +50,6 @@ public class Programme {
 
 	public void heure(String heure) {
 		try {
-
 			this.heure = new java.sql.Time(formatter.parse(heure).getTime());
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block

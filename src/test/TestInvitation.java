@@ -16,7 +16,6 @@ import invitation.Programme;
 public class TestInvitation {
 	private static final String HEURE = "09:03 am";
 	private static final String HEURE_1 = "10:00 am";
-	private static final String HEURE_2 = "11:00 am";
 	private static final String NOMINVITE = "M. Alex";
 	private static final String DESCRIPTION = "Ruby";
 	private static final String NOMCONFERENCIER = "Alexis";
@@ -45,7 +44,6 @@ public class TestInvitation {
 			inv.conferencier(conf -> {
 				conf.participationDe(NOMCONFERENCIER);
 				conf.enTantQue(PROFESSION);
-
 			});
 
 		});
@@ -59,7 +57,6 @@ public class TestInvitation {
 				prog.heure(HEURE);
 				prog.presente(DESCRIPTION);
 			});
-
 		});
 
 		invitation2 = InvitationBuilder.invit(inv -> {
@@ -70,10 +67,9 @@ public class TestInvitation {
 			inv.conferencier(conf -> {
 				conf.participationDe(NOMCONFERENCIER);
 				conf.enTantQue(PROFESSION);
-
 			});
-
 		});
+		
 		invitation3 = InvitationBuilder.invit(inv -> {
 			inv.theme(THEME);
 			inv.nomInvite(NOMINVITE);
@@ -94,18 +90,15 @@ public class TestInvitation {
 			inv.conferencier(conf -> {
 				conf.participationDe(NOMCONFERENCIER);
 				conf.enTantQue(PROFESSION);
-
 			});
-
 		});
 
-		attendu = "---------------Invitation---------------"
-				+ "\n Titre de l'invitation : " + NOMINVITE + "\n"
-				+ "\n Thème :" + THEME + "\n Animée par : \n" + NOMCONFERENCIER
-				+ "  " + PROFESSION + "\n programme : \n" + "09:03:00 -- "
-				+ DESCRIPTION + "\n Date de la conference : 30-03-2017 09:00:00"
-				+ "\n Lieu de la conference : " + LIEU;
-
+		attendu = " \t---------------Invitation---------------"
+				+ "\n\n\n"+ NOMINVITE + ", vous êtes cordialement invités à la conférence ayant pour thème"
+				+ "\n \t" + THEME + "\n\nPrésentée par : \n\t" + NOMCONFERENCIER
+				+ "  " + PROFESSION + "\n\nProgramme : \n" + "09:03:00 -- "
+				+ DESCRIPTION + "\n\nDate: 30-03-2017 09:00:00"
+				+ "\t Lieu: " + LIEU;
 	}
 
 	@Test
@@ -116,7 +109,6 @@ public class TestInvitation {
 	@Test(expected = IllegalArgumentException.class)
 	public void testAjoutInvitationIncomplete() {
 		invitation1.toString();
-
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -128,5 +120,4 @@ public class TestInvitation {
 	public void testAjoutInvitationDatesNonOrdonne() {
 		invitation3.toString();
 	}
-
 }

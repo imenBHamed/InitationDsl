@@ -8,8 +8,8 @@ import org.junit.Test;
 import invitation.Conferencier;
 
 public class TestConferencier {
-	private static final String NOMCONFERENCIER = "Alexis";
-	private static final String PROFESSION = "ingenieur";
+	private static final String NOMCONFERENCIER = "Maha";
+	private static final String PROFESSION = "ingénieure informatique";
 	private String attendu;
 	public Conferencier conf;
 	public Conferencier confErrorP;
@@ -20,9 +20,7 @@ public class TestConferencier {
 		conf = new Conferencier(c -> {
 			c.participationDe(NOMCONFERENCIER);
 			c.enTantQue(PROFESSION);
-
 		});
-
 		confErrorP = new Conferencier(c -> {
 			c.participationDe(NOMCONFERENCIER);
 		});
@@ -30,9 +28,7 @@ public class TestConferencier {
 		confErrorN = new Conferencier(c -> {
 			c.enTantQue(PROFESSION);
 		});
-
 		attendu = NOMCONFERENCIER + "  " + PROFESSION;
- 
 	}
 
 	@Test
@@ -59,5 +55,4 @@ public class TestConferencier {
 	public void testAjoutIncomplet() {
 		confErrorN.toString();
 	}
-
 }
